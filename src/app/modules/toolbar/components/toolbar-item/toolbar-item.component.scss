@@ -1,0 +1,77 @@
+#container {
+  perspective: 500px;
+  perspective-origin: calc(bottom - 30px);
+  animation: deselect;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+  padding: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  transform-origin: top;
+}
+
+#toolbar-item {
+  line-height: 30px;
+  text-align: center;
+  float: top;
+  background-color: rgba($color: #ffffff, $alpha: 0.7);
+}
+
+#container:hover {
+  animation: select;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+
+#container:hover #wall {
+  animation: flip;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes select {
+  0% {
+    transform: rotateX(0);
+  }
+  100% {
+    transform: rotateX(30deg);
+  }
+}
+
+@keyframes deselect {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
+
+#wall {
+  width: 100%;
+  height: 10px;
+  background-color: rgba($color: #fff, $alpha: 0.3);
+  animation: unflip;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+  transform-origin: top;
+  float: top;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(-90deg);
+  }
+  100% {
+    transform: rotateX(-20deg);
+  }
+}
+
+@keyframes unflip {
+  0% {
+    transform: rotateX(-20deg);
+  }
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
